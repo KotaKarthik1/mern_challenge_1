@@ -2,17 +2,26 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-
+require('dotenv').config();
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5032;
 
 app.use(express.json());
 app.use(cors());
 
 // MongoDB Connection
-mongoose.connect('mongodb://0.0.0.0:27017/counter_db')
-.then(() => console.log('Connected to MongoDB'))
-.catch(err => console.error('Error connecting to MongoDB:', err));
+(async () => {
+    try {
+        console.log(process.env.DATABASE_URL)
+        await mongoose.connect(process.env.DATABASE_URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log("Mongoose is connected");
+    } catch (err) {
+        console.error("Error connecting to MongoDB:", err);
+    }
+})();
 
 // Define counter schema and model
 const counterSchema = new mongoose.Schema({
