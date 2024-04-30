@@ -40,7 +40,7 @@ const Counter = () => {
 
   const fetchCounter = useCallback(async () => {
     try {
-      const response = await axios.get('http://localhost:5032/api/counter');
+      const response = await axios.get('https://mern-challenge-1.onrender.com/api/counter');
       dispatch({ type: 'SET', count: response.data.count });
     } catch (err) {
       console.error(err);
@@ -53,7 +53,7 @@ const Counter = () => {
 
   const incrementCounter = useCallback(async (variable) => {
     try {
-      await axios.post(`http://localhost:5032/api/counter/increment/${variable}`);
+      await axios.post(`https://mern-challenge-1.onrender.com/api/counter/increment/${variable}`);
       dispatch({ type: 'INCREMENT' });
     } catch (err) {
       console.error(err);
@@ -62,7 +62,7 @@ const Counter = () => {
 
   const decrementCounter = useCallback(async (variable) => {
     try {
-      await axios.post(`http://localhost:5032/api/counter/decrement/${variable}`);
+      await axios.post(`https://mern-challenge-1.onrender.com/api/counter/decrement/${variable}`);
       dispatch({ type: 'DECREMENT' });
     } catch (err) {
       console.error(err);
@@ -86,7 +86,7 @@ const MyCounter = () => {
   const navigate = useNavigate();
   const fetchMyCounter = useCallback(async () => {
     try {
-      const response = await axios.get('http://localhost:5032/api/counter');
+      const response = await axios.get('https://mern-challenge-1.onrender.com/api/counter');
       dispatch({ type: 'SET_MYCOUNT', mycount: response.data.mycount });
       console.log(response.data);
     } catch (err) {
@@ -100,7 +100,7 @@ const MyCounter = () => {
 
   const MyincrementCounter = useCallback(async (variable) => {
     try {
-      await axios.post(`http://localhost:5032/api/counter/increment/${variable}`);
+      await axios.post(`https://mern-challenge-1.onrender.com/api/counter/increment/${variable}`);
       dispatch({ type: 'MYINCREMENT' });
     } catch (err) {
       console.error(err);
@@ -109,7 +109,7 @@ const MyCounter = () => {
 
   const MydecrementCounter = useCallback(async (variable) => {
     try {
-      await axios.post(`http://localhost:5032/api/counter/decrement/${variable}`);
+      await axios.post(`https://mern-challenge-1.onrender.com/api/counter/decrement/${variable}`);
       dispatch({ type: 'MYDECREMENT' });
     } catch (err) {
       console.error(err);
@@ -132,7 +132,7 @@ const App = () => {
   useEffect(() => {
     const fetchInitialValues = async () => {
       try {
-        const response = await axios.get('http://localhost:5032/api/counter');
+        const response = await axios.get('https://mern-challenge-1.onrender.com/api/counter');
         dispatch({ type: 'SET', count: response.data.count });
       dispatch({ type: 'SET_MYCOUNT', mycount: response.data.mycount });
       } catch (err) {
